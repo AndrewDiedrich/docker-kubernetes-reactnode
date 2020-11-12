@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: eriksondigital-com-tls
+spec:
+  secretName: eriksondigital-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+    #name on cert
+  commonName: eriksondigital.com
+  dnsNames:
+    - eriksondigital.com
+    - www.eriksondigital.com
+  acme:
+    config:
+      - http01:
+          ingressClass: nginx
+        domains:
+          - eriksondigital.com
+          - www.eriksondigital.com
