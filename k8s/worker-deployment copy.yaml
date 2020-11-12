@@ -13,11 +13,16 @@ spec:
         app: worker
     spec:
       containers:
-      - name: worker
-        image: andrewdiedrich/multi-worker
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "700m"
+        - name: worker
+          image: andrewdiedrich/multi-worker
+          env:
+            - name: REDIS_HOST
+              value: redis-cluster-ip-service
+            - name: REDIS_PORT
+              value: '6379'
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "700m"
 # no port because there's no incoming requests from other pods
 
