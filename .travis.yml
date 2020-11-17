@@ -19,7 +19,7 @@ before_install:
   # project clust name
   - gcloud container clusters get-credentials multi-cluster
   # login to docker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  # - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   # run all apps that need tests ran before deployment
   - docker build -t andrewdiedrich/react-test -f ./client/Dockerfile.dev ./client
 
